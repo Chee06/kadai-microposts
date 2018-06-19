@@ -8,27 +8,45 @@ use App\User; // add
 
 class UsersController extends Controller
 {
+//index-------------------------------------------------------------------------------------------------
     public function index()
     {
-        $users = User::paginate(10);
+        $users = User::all();
         
         return view('users.index', [
             'users' => $users,
         ]);
     }
 
-    public function show($id)
+//followings--------------------------------------------------------------------------------------------    
+    public function followings($id)
     {
         $user = User::find($id);
-        $microposts = $user->microposts()->orderBy('created_at', 'desc')->paginate(10);
+        $followings = $user->followings()->paginate(10);
 
         $data = [
             'user' => $user,
-            'microposts' => $microposts,
+            'users' => $followings,
         ];
 
         $data += $this->counts($user);
 
-        return view('users.show', $data);
+        return view('users.followings', $data);
+    }
+
+//followers-------------------------------------------------------------------------------------------------------
+    public function followers($id)
+    {
+        $user = User::find($id);
+        $followers = $user->followers()->paginate(10);
+
+        $data = [
+            'user' => $user,
+            'users' => $followers,
+        ];
+
+        $data += $this->counts($user);
+
+        return view('users.followers', $data);
     }
 }
