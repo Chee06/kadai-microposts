@@ -28,6 +28,7 @@ class MicropostsController extends Controller
             ];
         }
         return view('welcome', $data);
+        
        /* $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();

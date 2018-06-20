@@ -12,6 +12,7 @@
                 </div>
             </div>
             @include('user_follow.follow_button', ['user' => $user])
+            @include('user_fav.favorite_button', ['user' => $micropost])
         </aside>
         <div class="col-xs-8">
             <ul class="nav nav-tabs nav-justified">
