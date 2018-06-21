@@ -17,9 +17,7 @@
                     {!! Form::open(['route' => ['microposts.destroy', $micropost->id], 'method' => 'delete']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
                     {!! Form::close() !!}
-                @endif
-                
-                @include('user_fav.fav_button', ['microposts' => $microposts])
+                @endif                            @include('user_fav.fav_button', ['microposts' => $microposts])
 
             </div>
         </div>
